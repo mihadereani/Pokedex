@@ -9,3 +9,17 @@ body {
     line-height: 1.6;
     margin: 19.2px 0 0 20px;
 }
+
+table {
+    overflow-x: auto;
+}
+
+tr, td {
+    width: auto;
+    border-bottom: 1px solid rgb(210, 210, 210);
+    padding-right: 4em;
+}
+
+.text__red{
+    color: rgb(250, 60, 60);
+}
