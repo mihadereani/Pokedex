@@ -16,18 +16,15 @@ let pokemonList = [
     }
 ];
 
-for (let i = 0; i < pokemonList.length; i++) {
-    let hightString = ' (height: ' + pokemonList[i].height + ')';
-    let nameString = pokemonList[i].name;
-
-    document.write('</tr>'); 
-        document.write('<td>' + nameString + '</td>' + '<td>' +  hightString + '</td>');
+pokemonList.forEach(function(pokemon) {
+    document.write('<tr>'); 
+        document.write('<td>' + pokemon.name + '</td>' + '<td>' + '(height: ' + pokemon.height + ')' + '</td>');
         document.write('<td>');
-        if (pokemonList[i].height > 1) {
+        if (pokemon.height > 1) {
             document.write('<div class="text__red">' + '“Wow, that\’s big!”' + '</div>');
         } else {
             document.write('');
         }
         document.write('</td>');
     document.write('</tr>');
-}
+});
