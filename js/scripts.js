@@ -23,7 +23,9 @@ function getAll() {
 }
 
 function add(item) {
-    return pokemonList.push(item);
+    if (typeof item === 'object' && Object.keys(item) === ['name', 'height', 'types']) {
+        return pokemonList.push(item);
+    }    
 }
 
 return {
