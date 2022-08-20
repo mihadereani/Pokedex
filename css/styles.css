@@ -7,27 +7,19 @@ body {
     font-weight: 700;
     font-size: 16px;
     line-height: 1.6;
-    margin: 19.2px 0 0 20px;
 }
 
-table {
-    overflow-x: auto;
-    border-collapse: collapse;
+.pokemon-list {
+    list-style-type: none;
 }
 
-tr, td {
-    width: auto;
-    border-bottom: 1px solid rgb(210, 210, 210);
-    padding-right: 4em;
+.button {
+    background-color: rgb(115, 134, 180);
+    color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 200px;
+    height: 50px;
+    margin: 3px;
 }
 
-.text__red{
-    color: rgb(250, 60, 60);
-}
-
-@media all and (max-width: 600px)
-{
-    tr, td {
-        padding-right: 0;
-    }
-}
