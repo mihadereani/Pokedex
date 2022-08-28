@@ -31,6 +31,7 @@ function addListItem(pokemon) {
 }
 
 function loadList() {
+    showLoadingMessage();
     return fetch(apiUrl).then(function (response) {
         return response.json();
     }).then(function (json) {
@@ -42,8 +43,10 @@ function loadList() {
             add (pokemon);
             console.log(pokemon);
         });
+        hideLoadingMessage();
     }).catch(function (e) {
         console.error(e);
+        hideLoadingMessage();
     })
 }
 
@@ -122,6 +125,17 @@ window.addEventListener('keydown', (e) => {
     }
 });
 
+function showLoadingMessage() {
+    let loader = document.querySelector('.loader');
+    let loadingMessageElement = document.createElement('div');
+    loadingMessageElement.innerText = 'Loading...';
+    loader.appendChild(loadingMessageElement);
+}
+
+function hideLoadingMessage() {
+    
+}
+
 return {
     getAll, 
     add,
@@ -129,7 +143,9 @@ return {
     loadList,
     loadDetails,
     showDetails,
-    showModal
+    showModal,
+    showLoadingMessage,
+    hideLoadingMessage
 }
 })();
 

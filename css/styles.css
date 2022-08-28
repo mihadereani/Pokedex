@@ -76,3 +76,7 @@ body {
 .image {
     height: 100px;
 }
+
+.loader {
+    font-size: 200px;
+}
