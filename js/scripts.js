@@ -50,17 +50,24 @@ function loadList() {
 function loadDetails(item) {
     let url = item.detailsUrl;
     return fetch(url).then(function (response) {
-      return response.json();
+        return response.json();
     }).then(function (details) {
-      item.imageUrl = details.sprites.front_default;
-      item.height = details.height;
-      item.types = details.types;
+        item.imageUrl = details.sprites.front_default;
+        item.height = details.height;
+        item.types = details.types;
     }).catch(function (e) {
-      console.error(e);
+        console.error(e);
     });
   }
 
-function showDetails(title, text) {
+function showDetails(item) {
+    pokemonRepository.loadDetails(item).then(function () {
+        showModal(item);
+        console.log(item);
+    });    
+}
+
+function showModal(pokemon) {
     let modalContainer = document.querySelector('#modal-container');
     modalContainer.innerHTML = '';
     
@@ -73,15 +80,21 @@ function showDetails(title, text) {
     closeButtonElement.addEventListener('click', hideModal);
     
     let titleElement = document.createElement('h1');
-    titleElement.innerText = title;
+    titleElement.innerText = pokemon.name;
     
     let contentElement = document.createElement('p');
-    contentElement.innerText = text;
+    contentElement.innerText = 'height: ' + pokemon.height;
+
+    let imageElement = document.createElement('img');
+    imageElement.src = pokemon.imageUrl;
+    imageElement.classList.add('image');
     
+    modalContainer.appendChild(modal); 
     modal.appendChild(closeButtonElement);
     modal.appendChild(titleElement);
+    modal.appendChild(imageElement);
     modal.appendChild(contentElement);
-    modalContainer.appendChild(modal);  
+     
     
     modalContainer.classList.add('is-visible');
 
@@ -90,15 +103,11 @@ function showDetails(title, text) {
         if (target === modalContainer) {
             hideModal();
         }
-    });
-
-    pokemonRepository.loadDetails(item).then(function () {
-        console.log(item);
     });    
 }
 
 document.querySelector('#show-modal').addEventListener('click', () => {
-    showModal('Modal title', 'This is the modal content!');
+    showModal;
 });
 
 function hideModal() {
@@ -119,7 +128,8 @@ return {
     addListItem,
     loadList,
     loadDetails,
-    showDetails
+    showDetails,
+    showModal
 }
 })();
 

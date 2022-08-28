@@ -1,0 +1,1 @@
+Pokedex uses API from https://pokeapi.co/docs/v2
