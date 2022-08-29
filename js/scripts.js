@@ -79,6 +79,7 @@ function showLoadingMessage() {
     let showLoadingMessage = document.querySelector('.loader');
     let loadingMessage = document.createElement('div')
     showLoadingMessage.innerText = 'Loading...';
+    showLoadingMessage.classList.remove('hide');
     
     showLoadingMessage.appendChild(loadingMessage);
 }
