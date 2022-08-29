@@ -76,3 +76,11 @@ body {
 .image {
     height: 100px;
 }
+
+.loader {
+    display: block;
+}
+
+.hide {
+    display: none;
+}

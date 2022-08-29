@@ -31,9 +31,12 @@ function addListItem(pokemon) {
 }
 
 function loadList() {
+    showLoadingMessage();
+    debugger;
     return fetch(apiUrl).then(function (response) {
         return response.json();
     }).then(function (json) {
+        hideLoadingMessage();
         json.results.forEach(function (item) {
             let pokemon = {
                 name: item.name,
@@ -43,19 +46,24 @@ function loadList() {
             console.log(pokemon);
         });
     }).catch(function (e) {
+        hideLoadingMessage();
         console.error(e);
     })
 }
 
 function loadDetails(item) {
+    showLoadingMessage();
+    debugger;
     let url = item.detailsUrl;
     return fetch(url).then(function (response) {
         return response.json();
     }).then(function (details) {
+        hideLoadingMessage();
         item.imageUrl = details.sprites.front_default;
         item.height = details.height;
         item.types = details.types;
     }).catch(function (e) {
+        hideLoadingMessage();
         console.error(e);
     });
   }
@@ -65,6 +73,20 @@ function showDetails(item) {
         showModal(item);
         console.log(item);
     });    
+}
+
+function showLoadingMessage() {
+    let showLoadingMessage = document.querySelector('.loader');
+    let loadingMessage = document.createElement('div')
+    showLoadingMessage.innerText = 'Loading...';
+    
+    showLoadingMessage.appendChild(loadingMessage);
+}
+
+function hideLoadingMessage() {
+    let hideLoadingMessage = document.querySelector('.loader');
+    hideLoadingMessage.classList.add('hide');
+    
 }
 
 function showModal(pokemon) {
