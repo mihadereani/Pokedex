@@ -76,8 +76,8 @@ function showDetails(item) {
 }
 
 function showLoadingMessage() {
-    let showLoadingMessage = document.querySelector('.loader');
-    let loadingMessage = document.createElement('div')
+    const showLoadingMessage = document.querySelector('.loader');
+    const loadingMessage = document.createElement('div')
     showLoadingMessage.innerText = 'Loading...';
     showLoadingMessage.classList.remove('hide');
     
@@ -85,9 +85,8 @@ function showLoadingMessage() {
 }
 
 function hideLoadingMessage() {
-    let hideLoadingMessage = document.querySelector('.loader');
+    const hideLoadingMessage = document.querySelector('.loader');
     hideLoadingMessage.classList.add('hide');
-    
 }
 
 function showModal(pokemon) {
