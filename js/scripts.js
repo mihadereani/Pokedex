@@ -17,11 +17,13 @@ function add(pokemon) {
 
 function addListItem(pokemon) {
     let pokemonList = document.querySelector('.pokemon-list');
-    let listItem = document.createElement('group-list-item');
+    let listItem = document.createElement('li');
     let button = document.createElement('button');
 
     button.innerText = pokemon.name;
-    button.classList.add('button');
+    button.classList.add('group-list-item');
+    button.classList.add('btn');
+    button.classList.add('btn-primary');
     button.addEventListener('click', function (event) {
         showDetails(pokemon)
     });
