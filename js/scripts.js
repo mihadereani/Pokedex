@@ -39,7 +39,7 @@ const pokemonRepository = (function () {
       .then(function (json) {
         hideLoadingMessage();
         json.results.forEach(function (item) {
-          let pokemon = {
+          const pokemon = {
             name: item.name,
             detailsUrl: item.url,
           };
@@ -56,7 +56,7 @@ const pokemonRepository = (function () {
   function loadDetails(item) {
     showLoadingMessage();
     debugger;
-    let url = item.detailsUrl;
+    const url = item.detailsUrl;
     return fetch(url)
       .then((response) => {
         return response.json();
