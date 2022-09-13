@@ -17,10 +17,10 @@ const pokemonRepository = (function () {
     const listItem = document.createElement("li");
     const button = document.createElement("button");
 
+    listItem.classList.add("group-list-item", "row", "justify-content-center", "mt-2");
+
     button.innerText = pokemon.name;
-    button.classList.add("group-list-item");
-    button.classList.add("btn");
-    button.classList.add("btn-primary");
+    button.classList.add("btn", "btn-primary", "col-12", "col-sm-9", "col-lg-6");
     button.addEventListener("click", function (event) {
       showDetails(pokemon);
     });
