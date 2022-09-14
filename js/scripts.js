@@ -8,7 +8,7 @@ const pokemonRepository = (function () {
     if (typeof pokemon === "object" && "name" in pokemon) {
       return pokemonList.push(pokemon);
     }
-  }
+  };
 
   addListItem = (pokemon) => {
     const pokemonList = document.querySelector(".pokemon-list");
@@ -39,7 +39,7 @@ const pokemonRepository = (function () {
 
     listItem.appendChild(button);
     pokemonList.appendChild(listItem);
-  }
+  };
 
   loadList = () => {
     showLoadingMessage();
@@ -61,7 +61,7 @@ const pokemonRepository = (function () {
         hideLoadingMessage();
         console.error(e);
       });
-  }
+  };
 
   loadDetails = (item) => {
     showLoadingMessage();
@@ -82,14 +82,14 @@ const pokemonRepository = (function () {
         hideLoadingMessage();
         console.error(e);
       });
-  }
+  };
 
   showDetails = (item) => {
     pokemonRepository.loadDetails(item).then(() => {
       showModal(item);
       console.log(item);
     });
-  }
+  };
 
   showLoadingMessage = () => {
     const showLoadingMessage = document.querySelector(".loader");
@@ -98,12 +98,12 @@ const pokemonRepository = (function () {
     showLoadingMessage.classList.remove("hide");
 
     showLoadingMessage.appendChild(loadingMessage);
-  }
+  };
 
   hideLoadingMessage = () => {
     const hideLoadingMessage = document.querySelector(".loader");
     hideLoadingMessage.classList.add("hide");
-  }
+  };
 
   showModal = (pokemon) => {
     const modalBody = $(".modal-body");
@@ -121,7 +121,7 @@ const pokemonRepository = (function () {
     modalBody.append(imageElement);
     modalBody.append(heightElement);
     modalBody.append(typeElement);
-  }
+  };
 
   return {
     getAll,
