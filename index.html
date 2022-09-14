@@ -11,28 +11,30 @@
 </head>
 
 <body>
+  <div class="container-fluid bg-secondary bg-opacity-25 bg-gradient" style="padding: 0px;">
+    <nav class="navbar sticky-top bg-warning shadow">
+      <div class="container-fluid justify-content-center">
+        <span class="navbar-brand mb-0 h1">Pokédex</span>
+      </div>
+    </nav>
 
-  <nav class="navbar sticky-top bg-warning">
-    <div class="container-fluid justify-content-center">
-      <span class="navbar-brand mb-0 h1">Pokédex</span>
-    </div>
-  </nav>
-
-  <div class="modal fade" id="pokemon-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel"></h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <div class="modal fade" id="pokemon-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"></h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body"></div>
         </div>
-        <div class="modal-body"></div>
       </div>
     </div>
-  </div>
+  
 
-  <div class="loader"></div>
-  <ul class="pokemon-list list-group container-fluid list-unstyled" id='show-modal'></ul>
-  <div id='modal-container'></div>
+    <div class="loader"></div>
+    <ul class="pokemon-list list-group container-fluid list-unstyled" id='show-modal'></ul>
+    <div id='modal-container'></div>
+  </div>
 
   <script src="https://code.jquery.com/jquery-3.6.1.min.js"
     integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>

@@ -27,10 +27,11 @@ const pokemonRepository = (function () {
     button.setAttribute("data-bs-target", "#pokemon-modal");
     button.classList.add(
       "btn",
-      "btn-primary",
+      "btn-outline-secondary",
       "col-12",
       "col-sm-9",
-      "col-lg-6"
+      "col-lg-6",
+      "shadow"
     );
     button.addEventListener("click", (event) => {
       showDetails(pokemon);
