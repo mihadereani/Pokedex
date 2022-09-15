@@ -19,7 +19,8 @@ const pokemonRepository = (function () {
       "group-list-item",
       "row",
       "justify-content-center",
-      "mt-2"
+      "mt-2",
+      "mx-2"
     );
 
     button.innerText = pokemon.name;
@@ -43,7 +44,6 @@ const pokemonRepository = (function () {
 
   loadList = () => {
     showLoadingMessage();
-    debugger;
     return fetch(apiUrl)
       .then((response) => response.json())
       .then((json) => {
@@ -65,7 +65,6 @@ const pokemonRepository = (function () {
 
   loadDetails = (item) => {
     showLoadingMessage();
-    debugger;
     const url = item.detailsUrl;
     return fetch(url)
       .then((response) => response.json())
