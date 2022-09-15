@@ -70,7 +70,6 @@ const pokemonRepository = (function () {
         item.imageUrl = details.sprites.front_default;
         item.height = details.height;
         item.types = [];
-
         for (var i = 0; i < details.types.length; i++) {
           item.types.push(" " + details.types[i].type.name);
         }
