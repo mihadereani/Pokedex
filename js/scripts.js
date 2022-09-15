@@ -14,15 +14,14 @@ const pokemonRepository = (function () {
     const pokemonList = document.querySelector(".pokemon-list");
     const listItem = document.createElement("li");
     const button = document.createElement("button");
-
     listItem.classList.add(
       "group-list-item",
       "row",
       "justify-content-center",
-      "mt-2"
+      "mt-2",
+      "mx-2"
     );
-
-    button.innerText = pokemon.name;
+    button.innerText = pokemon.name[0].toUpperCase() + pokemon.name.slice(1);
     button.setAttribute("data-bs-toggle", "modal");
     button.setAttribute("data-bs-target", "#pokemon-modal");
     button.classList.add(
@@ -36,14 +35,12 @@ const pokemonRepository = (function () {
     button.addEventListener("click", (event) => {
       showDetails(pokemon);
     });
-
     listItem.appendChild(button);
     pokemonList.appendChild(listItem);
   };
 
   loadList = () => {
     showLoadingMessage();
-    debugger;
     return fetch(apiUrl)
       .then((response) => response.json())
       .then((json) => {
@@ -51,7 +48,7 @@ const pokemonRepository = (function () {
         json.results.forEach((item) => {
           const pokemon = {
             name: item.name,
-            detailsUrl: item.url,
+            detailsUrl: item.url
           };
           add(pokemon);
           console.log(pokemon);
@@ -65,7 +62,6 @@ const pokemonRepository = (function () {
 
   loadDetails = (item) => {
     showLoadingMessage();
-    debugger;
     const url = item.detailsUrl;
     return fetch(url)
       .then((response) => response.json())
@@ -75,7 +71,7 @@ const pokemonRepository = (function () {
         item.height = details.height;
         item.types = [];
         for (var i = 0; i < details.types.length; i++) {
-          item.types.push(details.types[i].type.name);
+          item.types.push(" " + details.types[i].type.name);
         }
       })
       .catch((e) => {
@@ -96,7 +92,6 @@ const pokemonRepository = (function () {
     const loadingMessage = document.createElement("div");
     showLoadingMessage.innerText = "Loading...";
     showLoadingMessage.classList.remove("hide");
-
     showLoadingMessage.appendChild(loadingMessage);
   };
 
@@ -108,15 +103,15 @@ const pokemonRepository = (function () {
   showModal = (pokemon) => {
     const modalBody = $(".modal-body");
     const modalTitle = $(".modal-title");
-
     modalTitle.empty();
     modalBody.empty();
-    const nameElement = $("<h1>" + pokemon.name + "</h1>");
+    const nameElement = $(
+      "<h1>" + pokemon.name[0].toUpperCase() + pokemon.name.slice(1) + "</h1>"
+    );
     const imageElement = $('<img class="pokemon-img">');
     imageElement.attr("src", pokemon.imageUrl);
     const heightElement = $("<p>" + "Height: " + pokemon.height + "</p>");
-    const typeElement = $("<p>" + "Types: " + pokemon.types + "</p>");
-
+    const typeElement = $("<p>" + "Type(s): " + pokemon.types + "</p>");
     modalTitle.append(nameElement);
     modalBody.append(imageElement);
     modalBody.append(heightElement);
@@ -130,7 +125,7 @@ const pokemonRepository = (function () {
     loadList,
     loadDetails,
     showDetails,
-    showModal,
+    showModal
   };
 })();
 
