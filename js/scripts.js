@@ -23,7 +23,7 @@ const pokemonRepository = (function () {
       "mx-2"
     );
 
-    button.innerText = pokemon.name;
+    button.innerText = pokemon.name[0].toUpperCase() + pokemon.name.slice(1);
     button.setAttribute("data-bs-toggle", "modal");
     button.setAttribute("data-bs-target", "#pokemon-modal");
     button.classList.add(
@@ -74,7 +74,7 @@ const pokemonRepository = (function () {
         item.height = details.height;
         item.types = [];
         for (var i = 0; i < details.types.length; i++) {
-          item.types.push(details.types[i].type.name);
+          item.types.push(" " + details.types[i].type.name);
         }
       })
       .catch((e) => {
@@ -110,11 +110,13 @@ const pokemonRepository = (function () {
 
     modalTitle.empty();
     modalBody.empty();
-    const nameElement = $("<h1>" + pokemon.name + "</h1>");
+    const nameElement = $(
+      "<h1>" + pokemon.name[0].toUpperCase() + pokemon.name.slice(1) + "</h1>"
+    );
     const imageElement = $('<img class="pokemon-img">');
     imageElement.attr("src", pokemon.imageUrl);
     const heightElement = $("<p>" + "Height: " + pokemon.height + "</p>");
-    const typeElement = $("<p>" + "Types: " + pokemon.types + "</p>");
+    const typeElement = $("<p>" + "Type(s): " + pokemon.types + "</p>");
 
     modalTitle.append(nameElement);
     modalBody.append(imageElement);
